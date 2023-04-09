@@ -17,6 +17,7 @@ namespace DevFramework.Northwin.DataAccess.Concrete.EntityFramework
             Database.SetInitializer<NorthwindContext>(null);
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
         // diğer nesneler için aynı şekidle oluşturmaya devam edebiliriz. 
 
         // productMap için hazırladığımız kısmı burada ayağa kaldırıyoruz. 

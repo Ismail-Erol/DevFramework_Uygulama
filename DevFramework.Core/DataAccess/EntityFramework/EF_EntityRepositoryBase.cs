@@ -13,7 +13,7 @@ namespace DevFramework.Core.DataAccess.EntityFramework
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {
-        TEntity IEntityRepository<TEntity>.Add(TEntity entity)
+       public TEntity Add(TEntity entity)
         {
             using (var context = new TContext())
             {
@@ -24,7 +24,7 @@ namespace DevFramework.Core.DataAccess.EntityFramework
             }
         }
 
-        void IEntityRepository<TEntity>.Delete(TEntity entity)
+        public void Delete(TEntity entity)
         {
             using (var context = new TContext())
             {
@@ -34,7 +34,7 @@ namespace DevFramework.Core.DataAccess.EntityFramework
             }
         }
 
-        TEntity IEntityRepository<TEntity>.Get(Expression<Func<TEntity, bool>> filter)
+        public TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
             using (var context = new TContext())
             {
@@ -42,7 +42,7 @@ namespace DevFramework.Core.DataAccess.EntityFramework
             }
         }
 
-        List<TEntity> IEntityRepository<TEntity>.GetList(Expression<Func<TEntity, bool>> filter)
+        public List<TEntity> GetList(Expression<Func<TEntity, bool>> filter=null)
         {
             using (var context = new TContext())
             {
@@ -52,7 +52,7 @@ namespace DevFramework.Core.DataAccess.EntityFramework
             }
         }
 
-        TEntity IEntityRepository<TEntity>.Update(TEntity entity)
+        public TEntity Update(TEntity entity)
         {
             using (var context = new TContext())
             {

@@ -10,15 +10,15 @@ namespace DevFramework.Northwind.Entities.Concrete
     // burayı veritabanındaki tablolara göre oluşturuyoruz. 
     public class Product : IEntity
     {
-        public int ProductId { get; set; }
-        public int CategoryId { get; set; }
-        public int SupplierID { get; set; }
-        public string ProductName { get; set; }
-        public string QuantityPerUnit { get; set; }
-        public decimal UnitPrice { get; set; }
-        public Int16 UnitsInStock { get; set; }
-        public Int16 UnitsOnOrder { get; set; }
-        public Int16 ReorderLevel { get; set; }
-        public bool Discontinued { get; set; }
+        public virtual int ProductId { get; set; }
+        public virtual int CategoryId { get; set; }
+        public virtual int SupplierID { get; set; }
+        public virtual string ProductName { get; set; }
+        public virtual string QuantityPerUnit { get; set; }
+        public virtual decimal UnitPrice { get; set; }
+        public virtual Int16 UnitsInStock { get; set; }
+        public virtual Int16 UnitsOnOrder { get; set; }
+        public virtual Int16 ReorderLevel { get; set; }
+        public virtual bool Discontinued { get; set; }
     }
 }

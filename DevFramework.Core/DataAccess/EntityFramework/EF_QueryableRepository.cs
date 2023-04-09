@@ -11,14 +11,14 @@ namespace DevFramework.Core.DataAccess.EntityFramework
     public class EF_QueryableRepository<T> : IQueryableRepository<T> where T : class, IEntity, new()
     {
         private DbContext _context;
-        private DbSet<T> _entites;
+        private IDbSet<T> _entites;
         public EF_QueryableRepository(DbContext context)
         {
             _context = context;
         }
 
         public IQueryable<T> Table => Entities; 
-        protected virtual DbSet<T> Entities 
+        protected virtual IDbSet<T> Entities 
         { 
             get 
             {  

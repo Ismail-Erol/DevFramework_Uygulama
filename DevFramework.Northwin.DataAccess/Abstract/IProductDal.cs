@@ -1,4 +1,5 @@
 ﻿using DevFramework.Core.DataAccess;
+using DevFramework.Northwind.Entities.ComplexType;
 using DevFramework.Northwind.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,6 @@ namespace DevFramework.Northwin.DataAccess.Abstract
     public interface IProductDal:IEntityRepository<Product>
     {
         // burada ürüne özgü metotlarımız olabilir. 
+        List<ProductDetail> GetProductDetail();
     }
 }
