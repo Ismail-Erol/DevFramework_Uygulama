@@ -1,4 +1,8 @@
-﻿using System.Reflection;
+﻿using DevFramework.Core.Aspects.Postsharp.ExceptionAspects;
+using DevFramework.Core.Aspects.Postsharp.LogAspects;
+using DevFramework.Core.Aspects.Postsharp.PerformanceAspects;
+using DevFramework.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -13,6 +17,15 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: LogAspect(typeof(FileLogger), AttributeTargetTypes = "DevFramework.Northwind.Business.Concrete.Managers.*")]
+// managers altında bulunan bütün managerların işlemlerini loglar. 
+// Managers.*add* içinde add geçen bütün metotları loglar şekinde kullanılabilir. 
+
+// managerlar için bir hata alıdğında aynı şekilde filelog yapacaktır. 
+[assembly: ExceptionLogAspect(typeof(FileLogger), AttributeTargetTypes = "DevFramework.Northwind.Business.Concrete.Managers.*")]
+
+// performans için oluşturduğumuz aspect yapısını da burada assembly seviyesinde  bu şekilde kullanıyoruz. 
+[assembly: PerformanceCounterAspect(AttributeTargetTypes = "DevFramework.Northwind.Business.Concrete.Managers.*")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from

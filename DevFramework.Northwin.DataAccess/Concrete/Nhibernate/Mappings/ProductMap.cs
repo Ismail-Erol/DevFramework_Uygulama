@@ -17,7 +17,7 @@ namespace DevFramework.Northwin.DataAccess.Concrete.Nhibernate.Mappings
             Id(x => x.ProductId).Column("ProductId");
 
             Map(x => x.CategoryId).Column("CategoryId");
-            Map(x => x.SupplierID).Column("SupplierID");
+           // Map(x => x.SupplierID).Column("SupplierID");
             Map(x => x.ProductName).Column("ProductName");
             Map(x => x.QuantityPerUnit).Column("QuantityPerUnit");
             Map(x => x.UnitPrice).Column("UnitPrice");

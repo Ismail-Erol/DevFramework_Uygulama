@@ -21,7 +21,7 @@ namespace DevFramework.Northwin.DataAccess.Concrete.EntityFramework.Mapping
 
             Property(x=> x.ProductId).HasColumnName("ProductId");
             Property(x => x.CategoryId).HasColumnName("CategoryId");
-            Property(x => x.SupplierID).HasColumnName("SupplierID");
+            //Property(x => x.SupplierID).HasColumnName("SupplierID");
             Property(x => x.ProductName).HasColumnName("ProductName");
             Property(x => x.QuantityPerUnit).HasColumnName("QuantityPerUnit");
             Property(x => x.UnitPrice).HasColumnName("UnitPrice");

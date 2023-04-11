@@ -14,7 +14,7 @@ namespace DevFramework.Core.CrossCuttingConcerns.Logging.Log4Net.Layouts
     {
         public override void ActivateOptions()
         {
-            throw new NotImplementedException();
+
         }
 
         // log eventini json'a çevirip yazmış olduk. 
