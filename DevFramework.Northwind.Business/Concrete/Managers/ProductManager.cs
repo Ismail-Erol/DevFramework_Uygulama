@@ -1,24 +1,16 @@
-﻿using DevFramework.Core.Aspects.Postsharp.AuthorizationAspects;
+﻿using AutoMapper;
+using DevFramework.Core.Aspects.Postsharp.AuthorizationAspects;
 using DevFramework.Core.Aspects.Postsharp.CacheAspects;
-using DevFramework.Core.Aspects.Postsharp.LogAspects;
 using DevFramework.Core.Aspects.Postsharp.PerformanceAspects;
 using DevFramework.Core.Aspects.Postsharp.TransactionAspects;
 using DevFramework.Core.Aspects.Postsharp.ValidationAspects;
 using DevFramework.Core.CrossCuttingConcerns.Caching.Microsft;
-using DevFramework.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
-using DevFramework.Core.CrossCuttingConcerns.Validation.FluentValidation;
 using DevFramework.Northwin.DataAccess.Abstract;
 using DevFramework.Northwind.Business.Abstract;
 using DevFramework.Northwind.Business.ValidationRules.FluentValidation;
 using DevFramework.Northwind.Entities.Concrete;
-using PostSharp.Aspects.Dependencies;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Transactions;
+
 
 namespace DevFramework.Northwind.Business.Concrete.Managers
 {
@@ -30,10 +22,12 @@ namespace DevFramework.Northwind.Business.Concrete.Managers
     public class ProductManager : IProductService
     {
         private IProductDal _productDal;
+        private readonly IMapper _mapper;
 
-        public ProductManager(IProductDal productDal)
+        public ProductManager(IProductDal productDal, IMapper mapper)
         {
             _productDal = productDal;
+            _mapper = mapper;
         }
 
         [FluentValidationAspect(typeof(ProductValidatior))]
@@ -53,12 +47,42 @@ namespace DevFramework.Northwind.Business.Concrete.Managers
         [PerformanceCounterAspect(2)]
 
         // autorize gibi bir işlemi aspectler ile bu şekilde tanımlayabiliriz.  
-        [SecuredOperation(Roles="Admin,Editor")] // getall operasyonunu sadece admin olanlar yapabilsin. 
+        // [SecuredOperation(Roles="Admin,Editor")] // getall operasyonunu sadece admin ve editör olanlar yapabilsin. 
         public List<Product> GetAll()
         {
-           // Thread.Sleep(3000); 
-           return _productDal.GetList();
+            // Thread.Sleep(3000); 
+            //return _productDal.GetList().Select(p => new Product // bu kısım manual mapping
+            //{
+            //    CategoryId = p.CategoryId,
+            //    ProductId = p.ProductId,
+            //    ProductName = p.ProductName,
+            //    UnitPrice = p.UnitPrice,
+            //    Discontinued = p.Discontinued,
+            //    QuantityPerUnit = p.QuantityPerUnit,
+            //    ReorderLevel = p.ReorderLevel,
+            //    UnitsInStock = p.UnitsInStock,
+            //    UnitsOnOrder = p.UnitsOnOrder
+            //}).ToList();
+
+            // manual automapper kullanarak mapping 
+            // List<Product> products = AutoMapperHelper.MapToSameTypeList(_productDal.GetList());
+
+            // automapper kullanarak mapping 
+            List<Product> products = _mapper.Map<List<Product>>(_productDal.GetList());
+            return products;
         }
+
+        // automapping refactoring
+        //private List<T> MapToSameTypeList<T>(List<T> list)
+        //{
+        //    Mapper.Initialize(c =>
+        //    {
+        //        c.CreateMap <T, T>();
+        //    });
+
+        //    List<T> result = Mapper.Map<List<T>, List<T>>(list);
+        //    return result;
+        //}
 
         public Product GetById(int id)
         {

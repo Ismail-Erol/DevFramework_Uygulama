@@ -24,6 +24,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DevFramework.Northwind.WcfService", "DevFramework.Northwind.WcfService\", "{7603D63F-5C1C-41EA-9CEA-91AD23E57FBA}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		ProjectReferences = "{034C4939-078D-4C80-AE11-185653EC54C5}|DevFramework.Northwin.DataAccess.dll;{C77F058E-6FED-4616-9DE5-2878A1DFE04E}|DevFramework.Northwind.Entities.dll;{a231d280-5bbc-46d3-aee4-f8452be28c68}|DevFramework.Core.dll;{8cfe5c67-0b4c-477a-9e93-4655c55ded71}|DevFramework.Northwind.Business.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_28736"
 		Debug.AspNetCompiler.PhysicalPath = "DevFramework.Northwind.WcfService\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_28736\"
@@ -42,6 +43,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DevFramework.Northwind.WcfS
 		SlnRelativePath = "DevFramework.Northwind.WcfService\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevFramework.Northwind.MvcAngularUI", "DevFramework.Northwind.MvcAngularUI\DevFramework.Northwind.MvcAngularUI.csproj", "{E67E02FD-24AE-4255-8904-4B3D51144642}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +92,10 @@ Global
 		{7603D63F-5C1C-41EA-9CEA-91AD23E57FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7603D63F-5C1C-41EA-9CEA-91AD23E57FBA}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{7603D63F-5C1C-41EA-9CEA-91AD23E57FBA}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{E67E02FD-24AE-4255-8904-4B3D51144642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E67E02FD-24AE-4255-8904-4B3D51144642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E67E02FD-24AE-4255-8904-4B3D51144642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E67E02FD-24AE-4255-8904-4B3D51144642}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

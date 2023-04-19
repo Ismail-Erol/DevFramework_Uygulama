@@ -7,12 +7,7 @@ using DevFramework.Northwin.DataAccess.Concrete.Nhibernate.Helpers;
 using DevFramework.Northwind.Business.Abstract;
 using DevFramework.Northwind.Business.Concrete.Managers;
 using Ninject.Modules;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DevFramework.Northwind.Business.DependencyResolves.Ninject
 {
